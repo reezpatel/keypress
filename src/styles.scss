@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+:root {
+  --bg-color: #00a896;
+  --bg-dark-color: #028090;
+
+  --bg-alt-color: #e0fbfc;
+  --bg-dark-alt-color: #ee6c4d;
+}
+
+body {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to left bottom,
+      var(--bg-color),
+      var(--bg-dark-color)
+    );
+    opacity: 1;
+  }
+
+  &::after {
+    z-index: -2;
+    background: linear-gradient(
+      to left bottom,
+      var(--bg-alt-color),
+      var(--bg-dark-alt-color)
+    );
+    opacity: 1;
+  }
+
+  &.animate {
+    &::before {
+      animation: fadeOut 0.4s;
+    }
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#instructions {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px 40px;
+  border-radius: 5px;
+
+  p {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+  }
+}
+
+.key {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  h3 {
+    font-size: 72px;
+    font-weight: bold;
+  }
+
+  div {
+    display: flex;
+
+    p {
+      font-size: 12px;
+      display: flex;
+      flex-direction: column-reverse;
+      width: 50%;
+
+      span {
+        font-weight: 500;
+        font-size: 24px;
+        width: 100%;
+        overflow: hidden;
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
